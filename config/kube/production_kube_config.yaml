@@ -1,0 +1,1208 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: board-generator
+  labels:
+    istio-injection: disabled # istioはdnsPolicyがDefaultなので使用できない。cluster.localを解決できない
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-1
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 100ms
+    board_generator_targets:
+      - price_name: binance_fx_btc_usd
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: bitflyer_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: bitflyer_btc_jpy
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: gmo_btc_jpy
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: liquid_btc_usd
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: bitbank_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: zaif_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-10
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 0ms
+    board_generator_targets:
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-2
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 200ms
+    board_generator_targets:
+      - price_name: binance_fx_btc_usd
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: bitflyer_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: bitflyer_btc_jpy
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: gmo_btc_jpy
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: liquid_btc_usd
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: bitbank_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: zaif_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-3
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 300ms
+    board_generator_targets:
+      - price_name: binance_fx_btc_usd
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: bitflyer_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: bitflyer_btc_jpy
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: gmo_btc_jpy
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: liquid_btc_usd
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: bitbank_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: zaif_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-4
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 400ms
+    board_generator_targets:
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-5
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 500ms
+    board_generator_targets:
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-6
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 600ms
+    board_generator_targets:
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-7
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 700ms
+    board_generator_targets:
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-8
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 800ms
+    board_generator_targets:
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-9
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 900ms
+    board_generator_targets:
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-logging
+  namespace: board-generator
+data:
+  zap-logger-config.yaml: |
+    level: info
+    development: false
+    outputPaths: ["stdout"]
+    errorOutputPaths: ["stderr"]
+    encoding: console
+    encoderConfig:
+      timeKey: ts
+      levelKey: level
+      nameKey: logger
+      callerKey: caller
+      messageKey: msg
+      stacktraceKey: stacktrace
+      lineEnding: ""
+      levelEncoder: "capitalColor"
+      timeEncoder: iso8601
+      durationEncoder: ""
+      callerEncoder: ""
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-1
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-1
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-1
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: board-generator
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - i-15100000184622
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-1
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-10
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-10
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-10
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: tensorflow-serving
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - i-15100000184932
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-10
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-2
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-2
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-2
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: board-generator
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - i-15100000184600
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-2
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-3
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-3
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-3
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: board-generator
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - i-15100000184623
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-3
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-4
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-4
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-4
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: board-generator
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - bg4
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-4
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-5
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-5
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-5
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: board-generator
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - bg5
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-5
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-6
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-6
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-6
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: board-generator
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - bg6
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-6
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-7
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-7
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-7
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: board-generator
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - bg7
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-7
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-8
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-8
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-8
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: board-generator
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - bg8
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-8
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-9
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-9
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-9
+    spec:
+      tolerations:
+        - key: taizokaneko.info/taint
+          operator: Equal
+          value: tensorflow-serving
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - i-15100000184933
+      serviceAccountName: default
+      imagePullSecrets:
+        - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+        - name: board-generator
+          image: docker.io/paulhindemith/board_generator-f6aa4c5d3d3ec7faf4cc835eacef32d0@sha256:467f9ef8e4999cfe418b7397aa58491ef8b4455e116d07dfd3ee0002ed84ad31
+          readinessProbe:
+            exec:
+              command: ["/bin/grpc_health_probe", "-addr=:50052"]
+            initialDelaySeconds: 10
+          resources:
+            requests:
+            # cpu: 1
+            # memory: 500Mi
+          env:
+            - name: NAME
+              value: board-generator
+            - name: SYSTEM_POD_NAME
+              value: board-generator
+            - name: SYSTEM_NAMESPACE
+              value: board-generator
+            - name: CONFIG_PATH
+              value: /etc/board_generator/config.yaml
+            - name: JAEGER_SERVICE_NAME
+              value: board_generator
+            - name: LOGGING_CONFIG_PATH
+              value: /etc/logger/zap-logger-config.yaml
+            - name: GRPC_SERVER_ADDRESS
+              value: :50052
+          volumeMounts:
+            - name: config-board-generator
+              mountPath: /etc/board_generator
+            - name: config-logging
+              mountPath: /etc/logger
+      volumes:
+        - name: config-board-generator
+          configMap:
+            name: config-board-generator-9
+        - name: config-logging
+          configMap:
+            name: config-logging
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-1
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-1
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-10
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-10
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-2
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-2
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-3
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-3
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-4
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-4
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-5
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-5
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-6
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-6
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-7
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-7
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-8
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-8
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-9
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-9
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052
+
+---

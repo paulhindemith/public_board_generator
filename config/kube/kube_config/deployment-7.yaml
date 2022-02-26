@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: board-generator-7
+  namespace: board-generator
+spec:
+  selector:
+    matchLabels:
+      id: board-generator-7
+  template:
+    metadata:
+      labels:
+        app: board-generator
+        id: board-generator-7
+    spec:
+      tolerations:
+      - key: taizokaneko.info/taint
+        operator: Equal
+        value: board-generator
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: In
+                values:
+                - bg7
+      serviceAccountName: default
+      imagePullSecrets:
+      - name: regcred
+      dnsPolicy: Default # ノードの設定を継承させる
+      containers:
+      - name: board-generator
+        image: ko://github.com/paulhindemith/board_generator/infra/cmd/board_generator
+        readinessProbe:
+          exec:
+            command: ["/bin/grpc_health_probe", "-addr=:50052"]
+          initialDelaySeconds: 10
+        resources:
+          requests:
+            # cpu: 1
+            # memory: 500Mi
+        env:
+        - name: NAME
+          value: board-generator
+        - name: SYSTEM_POD_NAME
+          value: board-generator
+        - name: SYSTEM_NAMESPACE
+          value: board-generator
+        - name: CONFIG_PATH
+          value: /etc/board_generator/config.yaml
+        - name: JAEGER_SERVICE_NAME
+          value: board_generator
+        - name: LOGGING_CONFIG_PATH
+          value: /etc/logger/zap-logger-config.yaml
+        - name: GRPC_SERVER_ADDRESS
+          value: :50052
+        volumeMounts:
+        - name: config-board-generator
+          mountPath: /etc/board_generator
+        - name: config-logging
+          mountPath: /etc/logger
+      volumes:
+      - name: config-board-generator
+        configMap:
+          name: config-board-generator-7
+      - name: config-logging
+        configMap:
+          name: config-logging

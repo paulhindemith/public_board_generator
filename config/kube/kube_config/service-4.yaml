@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: board-generator-4
+  namespace: board-generator
+spec:
+  selector:
+    id: board-generator-4
+  ports:
+  - protocol: TCP
+    port: 50052
+    targetPort: 50052

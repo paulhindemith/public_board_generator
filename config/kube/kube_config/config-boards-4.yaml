@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-4
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 400ms
+    board_generator_targets:
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024

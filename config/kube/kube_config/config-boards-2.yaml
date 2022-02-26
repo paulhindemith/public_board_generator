@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-board-generator-2
+  namespace: board-generator
+data:
+  config.yaml: |
+    board_generator_wait: 200ms
+    board_generator_targets:
+      - price_name: binance_fx_btc_usd
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: bitflyer_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: bitflyer_btc_jpy
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: gmo_fx_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: gmo_btc_jpy
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: liquid_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      # - price_name: liquid_btc_usd
+      #   timeout: 5s
+      #   read_limit: 1024
+      #   write_limit: 1024
+      - price_name: bitbank_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: zaif_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
+      - price_name: coincheck_btc_jpy
+        timeout: 5s
+        read_limit: 1024
+        write_limit: 1024
