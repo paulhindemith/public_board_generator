@@ -1,7 +1,7 @@
 # public_board_generator
 ##### 注意
   このリポジトリはプライベートリポジトリboard_generatorのコピーです。
-  使用できません。[ブログ](https://taizokaneko.info)からアクセスされていることを想定しています。
+  使用できません。[ブログ](https://paulhindemith.hatenablog.com/entry/2022/02/26/164810)からアクセスされていることを想定しています。
 ## 概要
 取引所から価格を1秒ごとにwatchしてgRPCでpushするサービスです。
 ## ディレクトリの説明
